@@ -32,5 +32,13 @@ public class Baralho {
 	      System.out.println(aCard.getValorCarta() + " de " + aCard.getNaipe());
 	    }
 	}
+	
+	public Carta getCarta(){
+		Naipe naipe = baralho.get(0).getNaipe();
+		ValorCarta valorCarta = baralho.get(0).getValorCarta();
+		baralho.remove(0);
+		Carta carta = new Carta(naipe, valorCarta);
+		return carta;
+	}
 
 }
