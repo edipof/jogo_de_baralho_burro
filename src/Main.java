@@ -7,7 +7,6 @@ public class Main {
 		Baralho baralho = new Baralho();
 		
 		baralho.imprimirBaralho();
-		
 	}
 
 }

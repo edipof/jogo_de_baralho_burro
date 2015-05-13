@@ -43,9 +43,9 @@ CLASSES = \
 	baralho/Naipe.java\
 	baralho/Carta.java\
 	baralho/Baralho.java\
-	Jogador/Pessoa.java\
-	Jogador/JogadorBaralho.java\
+	Jogador/Jogador.java\
 	Jogador/JogadorHumano.java\
+	Jogador/JogadorBot.java\
 	JogoBurro/Partida.java\
 	JogoBurro/Mesa.java\
 	/Main.java\

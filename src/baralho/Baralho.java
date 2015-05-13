@@ -40,5 +40,10 @@ public class Baralho {
 		Carta carta = new Carta(naipe, valorCarta);
 		return carta;
 	}
-
+	
+	public Boolean temCarta(){
+		if(!baralho.isEmpty())
+			return true;
+		return false;
+	}
 }
