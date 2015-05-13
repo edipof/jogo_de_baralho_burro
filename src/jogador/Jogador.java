@@ -1,32 +1,26 @@
 package jogador;
 
-import java.util.ArrayList;
-
 import baralho.Carta;
 
 public abstract class Jogador {
-
-	protected ArrayList<Carta> mao;
+	// Todo jogador tem uma MaoDeCartas
+	protected MaoDeCartas mao;
 	
 	public abstract String getNome();
 	
 	public Jogador() {
-		this.mao = new ArrayList<Carta>();
+		this.mao = new MaoDeCartas();
 	}
 
-	/*public Carta getCartaMao(int index) {
-		if (index > getMao().size()) {
-			System.out.println("Valor invalido!");
-			return null;
-		}
-		return mao.get(index);
-	}*/
+	public Carta getCartaMao(int index) {
+		return mao.escolherCarta(index);
+	}
 
-	public ArrayList<Carta> getMao() {
+	public MaoDeCartas getMao() {
 		return mao;
 	}
 
-	public void setMao(ArrayList<Carta> mao) {
+	public void setMao(MaoDeCartas mao) {
 		this.mao = mao;
 	}
 
