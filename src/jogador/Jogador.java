@@ -1,4 +1,4 @@
-package Jogador;
+package jogador;
 
 import baralho.Baralho;
 

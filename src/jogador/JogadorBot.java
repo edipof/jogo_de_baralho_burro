@@ -1,4 +1,4 @@
-package Jogador;
+package jogador;
 
 
 public class JogadorBot extends Jogador{

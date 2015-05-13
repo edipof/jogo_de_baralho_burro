@@ -1,4 +1,4 @@
-package JogoBurro;
+package jogoBurro;
 
 public class Partida {
 
