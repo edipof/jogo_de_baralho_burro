@@ -1,5 +1,5 @@
 package JogoBurro;
 
-public class Jogo {
+public class Partida {
 
 }
