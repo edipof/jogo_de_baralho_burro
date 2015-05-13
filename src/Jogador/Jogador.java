@@ -1,8 +1,14 @@
 package Jogador;
 
-public abstract class Pessoa {
+public class Jogador {
 	private String nome;
 
+	//mao
+	
+	//pontuacao (n de cartas)
+	
+	//
+	
 	public String getNome() {
 		return nome;
 	}
