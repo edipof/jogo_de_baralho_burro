@@ -1,15 +1,17 @@
 package jogador;
 
-import baralho.Baralho;
+import java.util.ArrayList;
+
+import baralho.Carta;
 
 public abstract class Jogador {
 
-	protected Baralho mao;
+	protected ArrayList<Carta> mao;
 	
 	public abstract String getNome();
 	
 	public Jogador() {
-		this.mao = new Baralho();
+		this.mao = new ArrayList<Carta>();
 	}
 
 	/*public Carta getCartaMao(int index) {
@@ -20,11 +22,11 @@ public abstract class Jogador {
 		return mao.get(index);
 	}*/
 
-	public Baralho getMao() {
+	public ArrayList<Carta> getMao() {
 		return mao;
 	}
 
-	public void setMao(Baralho mao) {
+	public void setMao(ArrayList<Carta> mao) {
 		this.mao = mao;
 	}
 
