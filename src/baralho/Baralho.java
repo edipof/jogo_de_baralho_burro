@@ -25,11 +25,10 @@ public class Baralho {
 	}
 	
 	public void imprimirBaralho(){
-		Iterator<Carta> cardIterator = baralho.iterator();
-	    while (cardIterator.hasNext())
-	    {
-	      Carta aCard = cardIterator.next();
-	      System.out.println(aCard.getValorCarta() + " de " + aCard.getNaipe());
+		Iterator<Carta> cartaIterator = baralho.iterator();
+	    while (cartaIterator.hasNext()){
+	      Carta aCarta = cartaIterator.next();
+	      System.out.println(aCarta.getValorCarta() + " de " + aCarta.getNaipe());
 	    }
 	}
 	
