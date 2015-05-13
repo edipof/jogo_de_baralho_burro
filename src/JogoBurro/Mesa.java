@@ -1,8 +1,5 @@
 package JogoBurro;
 
-import java.util.ArrayList;
-
-import baralho.Carta;
 
 public class Mesa {
 	
