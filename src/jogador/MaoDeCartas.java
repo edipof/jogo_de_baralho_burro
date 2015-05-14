@@ -17,7 +17,7 @@ public class MaoDeCartas {
 		this.cartas = new ArrayList<Carta>();
 	}
 
-	public void verMao() {
+	protected void verMao() {
 		if (!cartas.isEmpty()) {
 			for (Carta carta : cartas) {
 				System.out.println("["+cartas.indexOf(carta)+"]"+ carta.getValorCarta() + " de "
@@ -32,16 +32,19 @@ public class MaoDeCartas {
 		cartas.add(carta);
 	}
 	
-	public Carta escolherCarta(int indexCarta){
-		if(indexCarta > cartas.size()){
+	protected Carta escolherCarta(int indexCarta){
+		
+		try {
+			Naipe naipe = cartas.get(indexCarta).getNaipe();
+			ValorCarta valorCarta = cartas.get(indexCarta).getValorCarta();
+			cartas.remove(indexCarta);
+			Carta carta = new Carta(naipe, valorCarta);
+			return carta;
+		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Valor Invalido!");
-			return null;
 		}
-		Naipe naipe = cartas.get(indexCarta).getNaipe();
-		ValorCarta valorCarta = cartas.get(indexCarta).getValorCarta();
-		cartas.remove(indexCarta);
-		Carta carta = new Carta(naipe, valorCarta);
-		return carta;
+		
+		return null;
 	}
 
 }

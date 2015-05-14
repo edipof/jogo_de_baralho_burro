@@ -12,10 +12,14 @@ public abstract class Jogador {
 		this.mao = new MaoDeCartas();
 	}
 
-	public Carta getCartaMao(int index) {
+	public Carta escolherCartaMao(int index) {
 		return mao.escolherCarta(index);
 	}
-
+	
+	public void verMao(){
+		mao.verMao();
+	}
+	
 	public MaoDeCartas getMao() {
 		return mao;
 	}

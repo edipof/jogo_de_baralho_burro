@@ -1,12 +1,37 @@
+import java.util.Scanner;
+
+import jogador.Jogador;
+import jogador.JogadorHumano;
 import baralho.Baralho;
 
 
 public class Main {
 
+	private static Scanner s;
+
 	public static void main(String[] args) {
+		Jogador jogador = new JogadorHumano("Edipo");
 		Baralho baralho = new Baralho();
+		baralho.embaralhar();
 		
-		baralho.imprimirBaralho();
+		for (int i = 0; i < 4; i++) {
+			jogador.getMao().addCartaMao(baralho.getCarta());
+		}
+		jogador.verMao();
+		s = new Scanner(System.in);
+		int valor = s.nextInt();
+		
+		while(jogador.escolherCartaMao(valor) == null){
+			try {
+				valor = s.nextInt();
+			} catch (NumberFormatException e) {
+				System.out.println("Apenas numeros");
+			}
+		}
+			
+		
+		System.out.println("\n");
+		jogador.verMao();
 	}
 
 }
