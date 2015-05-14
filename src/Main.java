@@ -15,13 +15,13 @@ public class Main {
 		baralho.embaralhar();
 		
 		for (int i = 0; i < 4; i++) {
-			jogador.getMao().addCartaMao(baralho.getCarta());
+			jogador.addCartaMao(baralho.getCarta());
 		}
 		jogador.verMao();
 		s = new Scanner(System.in);
 		int valor = s.nextInt();
 		
-		while(jogador.escolherCartaMao(valor) == null){
+		while(jogador.jogarCartaMao(valor) == null){
 			try {
 				valor = s.nextInt();
 			} catch (NumberFormatException e) {

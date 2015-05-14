@@ -28,7 +28,7 @@ public class MaoDeCartas {
 		}
 	}
 	
-	public void addCartaMao(Carta carta){
+	protected void addCartaMao(Carta carta){
 		cartas.add(carta);
 	}
 	
