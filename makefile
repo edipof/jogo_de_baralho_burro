@@ -46,6 +46,7 @@ CLASSES = \
 	jogador/Jogador.java\
 	jogador/JogadorHumano.java\
 	jogador/JogadorBot.java\
+	jogador/MaoDeCartas.java\
 	jogoBurro/Partida.java\
 	jogoBurro/Mesa.java\
 	/Main.java\
