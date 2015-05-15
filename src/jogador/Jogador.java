@@ -40,5 +40,5 @@ public abstract class Jogador {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 }

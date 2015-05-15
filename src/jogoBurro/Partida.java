@@ -45,7 +45,37 @@ public class Partida {
 		//System.out.println(jogador.getNome() + " venceu essa rodada!");
 		return null;
 	}
+	
+	private void rodada(){
+		
+	}
+	/*-Adicionar os jogadores;
+	-Distribuir as cartas iniciais (4 cartas);
+	rodada{
+		-Jogador de id 1 começa jogando uma carta;
+		-iterar até todos jogadores jogarem
+		-- Para jogar é preciso que a carta seja do mesmo naipe (isJogadaValida())
+		-- Se !isJogadaValida() comprar cartas até sair uma carta do naipe desejado
+		-- Vencedor da rodada é quem jogar a carta de maior valor
+	}
+	*/
+	
+	private void distribuirCartasIniciais(){
+		for (Jogador jogador : listaJogadores) {
+			for (int i = 0; i < 4; i++) {
+				jogador.addCartaMao(baralho.getCarta());
+			}
+		}
+	}
+	
 	public void novaPartida(int numJogadores){
 		baralho.embaralhar();
+		
+		distribuirCartasIniciais();
+		
+		while(baralho.temCarta()){
+			rodada();
+		}
+		
 	}
 }
