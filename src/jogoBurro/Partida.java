@@ -1,6 +1,7 @@
 package jogoBurro;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import jogador.Jogador;
 import baralho.Baralho;
@@ -25,14 +26,16 @@ import baralho.Carta;
 public class Partida {
 	//O jogo so tem um baralho
 	private static Baralho baralho = new Baralho();
+	//Armazena a carta que está no topo da lista
 	private static ArrayList<Carta> mesa = new ArrayList<Carta>();
+	//Lista de jogadores
+	private LinkedList<Jogador> listaJogadores = new LinkedList<Jogador>();
 	
-	private void instanciarJogadores(){
-		//intanciar jogadores
-		//Humano ou bot
+	public void addJogador(Jogador jogador){
+		listaJogadores.add(jogador);
 	}
 	
-	private Boolean verificaSeJogadaEhValida(){
+	private Boolean isJogadaValida(){
 		//verica se a jogada eh valida
 		return null;
 	}

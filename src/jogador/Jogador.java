@@ -7,6 +7,7 @@ public abstract class Jogador {
 	protected MaoDeCartas mao;
 	
 	public abstract String getNome();
+	private int id;
 	
 	public Jogador() {
 		this.mao = new MaoDeCartas();
@@ -30,6 +31,14 @@ public abstract class Jogador {
 
 	public void setMao(MaoDeCartas mao) {
 		this.mao = mao;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
