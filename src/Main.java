@@ -3,15 +3,35 @@ import java.util.Scanner;
 import jogador.Jogador;
 import jogador.JogadorHumano;
 import baralho.Baralho;
+import baralho.Carta;
 
 
 public class Main {
 
 	private static Scanner s;
-
+	private static Baralho baralho = new Baralho();
+	private static void jogadaJogadorHumano(Jogador jogador){
+		Scanner s;
+		int valor;
+		jogador.verMao();
+		s = new Scanner(System.in);
+		System.out.println("Digite o valor");
+		valor = s.nextInt();
+		Carta carta = jogador.jogarCartaMao(valor);
+		while(carta == null){
+			try {
+				valor = s.nextInt();
+				carta = jogador.jogarCartaMao(valor);
+			} catch (NumberFormatException e) {
+				System.out.println("Apenas numeros");
+			}
+		}
+		s.close();
+		
+	}
 	public static void main(String[] args) {
 		Jogador jogador = new JogadorHumano("Edipo");
-		Baralho baralho = new Baralho();
+		
 		baralho.embaralhar();
 		
 		for (int i = 0; i < 4; i++) {
@@ -19,19 +39,43 @@ public class Main {
 		}
 		jogador.verMao();
 		s = new Scanner(System.in);
-		int valor = s.nextInt();
 		
-		while(jogador.jogarCartaMao(valor) == null){
-			try {
-				valor = s.nextInt();
-			} catch (NumberFormatException e) {
-				System.out.println("Apenas numeros");
+		System.out.println("Agora vamos comprar cartas");
+		String palavra = new String();
+		
+		while(!palavra.equals("s")){
+			System.out.println("Deseja comprar uma carta? Pressione 'c' ou 'j' para jogar");
+			palavra = s.next();
+			switch (palavra) {
+			case "c":
+				jogador.addCartaMao(baralho.getCarta());
+				jogador.verMao();
+				break;
+			case "j":
+				Scanner c;
+				int valor;
+				jogador.verMao();
+				c = new Scanner(System.in);
+				System.out.println("Digite o valor");
+				valor = c.nextInt();
+				Carta carta = jogador.jogarCartaMao(valor);
+				while(carta == null){
+					try {
+						valor = c.nextInt();
+						carta = jogador.jogarCartaMao(valor);
+					} catch (NumberFormatException e) {
+						System.out.println("Apenas numeros");
+					}
+				}
+				//c.close();
+				jogador.verMao();
+				break;
+			default:
+				break;
 			}
-		}
 			
-		
-		System.out.println("\n");
-		jogador.verMao();
+		}
+		System.out.println("saiu");
 	}
 
 }

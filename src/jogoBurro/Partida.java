@@ -37,9 +37,13 @@ public class Partida {
 		listaJogadores.add(jogador);
 	}
 	
-	private Boolean isJogadaValida(){
+	private Boolean isJogadaValida(Carta carta){
 		//verica se a jogada eh valida
-		return null;
+		if(cartaMesa == null || carta.getNaipe().equals(
+				cartaMesa.getNaipe()))
+			return true;
+		System.out.println("Jogada Invalida!");
+		return false;
 	}
 	
 	private Jogador vencedorDaRodada(Jogador jogador){
@@ -48,36 +52,44 @@ public class Partida {
 		return null;
 	}
 	
-	private void jogadaJogadorHumano(Jogador jogador){
+	private Carta jogadaJogadorHumano(Jogador jogador){
 		Scanner s;
 		int valor;
 		jogador.verMao();
 		s = new Scanner(System.in);
 		valor = s.nextInt();
-		
-		while(jogador.jogarCartaMao(valor) == null){
+		Carta carta = jogador.jogarCartaMao(valor);
+		while(carta == null){
 			try {
 				valor = s.nextInt();
+				carta = jogador.jogarCartaMao(valor);
 			} catch (NumberFormatException e) {
 				System.out.println("Apenas numeros");
 			}
 		}
 		s.close();
+		
+		return carta;
 	}
 	
-	private void jogadaJogadorBot(Jogador jogador){
+	private Carta jogadaJogadorBot(Jogador jogador){
 		//TODO
+		return null;
 	}
 	
 	private void rodada(){
-		
+		Carta carta = new Carta();
 		for (Jogador jogador : listaJogadores) {
 			if (jogador instanceof JogadorHumano) {
-				jogadaJogadorHumano(jogador);
+				carta = jogadaJogadorHumano(jogador);
+				while(!isJogadaValida(carta)){
+					System.out.println("Compre outra carta ou escolha outra carta de sua mao.");
+				}
 			}else if(jogador instanceof JogadorBot){
-				jogadaJogadorBot(jogador);
+				carta = jogadaJogadorBot(jogador);
+				while(!isJogadaValida(carta)){}
 			}
-				
+			
 		}
 	}
 	/*-Adicionar os jogadores;

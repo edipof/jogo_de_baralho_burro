@@ -8,7 +8,10 @@ public class Carta {
 		this.setNaipe(naipe);
 		this.setValorCarta(valorCarta);
 	}
-
+	public Carta(){
+		
+	}
+	
 	public Naipe getNaipe() {
 		return naipe;
 	}
