@@ -1,9 +1,11 @@
 package jogoBurro;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 import jogador.Jogador;
+import jogador.JogadorBot;
+import jogador.JogadorHumano;
 import baralho.Baralho;
 import baralho.Carta;
 /*
@@ -27,7 +29,7 @@ public class Partida {
 	//O jogo so tem um baralho
 	private static Baralho baralho = new Baralho();
 	//Armazena a carta que está no topo da lista
-	private static ArrayList<Carta> mesa = new ArrayList<Carta>();
+	private static Carta cartaMesa = null;
 	//Lista de jogadores
 	private LinkedList<Jogador> listaJogadores = new LinkedList<Jogador>();
 	
@@ -46,8 +48,37 @@ public class Partida {
 		return null;
 	}
 	
+	private void jogadaJogadorHumano(Jogador jogador){
+		Scanner s;
+		int valor;
+		jogador.verMao();
+		s = new Scanner(System.in);
+		valor = s.nextInt();
+		
+		while(jogador.jogarCartaMao(valor) == null){
+			try {
+				valor = s.nextInt();
+			} catch (NumberFormatException e) {
+				System.out.println("Apenas numeros");
+			}
+		}
+		s.close();
+	}
+	
+	private void jogadaJogadorBot(Jogador jogador){
+		//TODO
+	}
+	
 	private void rodada(){
 		
+		for (Jogador jogador : listaJogadores) {
+			if (jogador instanceof JogadorHumano) {
+				jogadaJogadorHumano(jogador);
+			}else if(jogador instanceof JogadorBot){
+				jogadaJogadorBot(jogador);
+			}
+				
+		}
 	}
 	/*-Adicionar os jogadores;
 	-Distribuir as cartas iniciais (4 cartas);
