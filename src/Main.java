@@ -10,25 +10,7 @@ public class Main {
 
 	private static Scanner s;
 	private static Baralho baralho = new Baralho();
-	private static void jogadaJogadorHumano(Jogador jogador){
-		Scanner s;
-		int valor;
-		jogador.verMao();
-		s = new Scanner(System.in);
-		System.out.println("Digite o valor");
-		valor = s.nextInt();
-		Carta carta = jogador.jogarCartaMao(valor);
-		while(carta == null){
-			try {
-				valor = s.nextInt();
-				carta = jogador.jogarCartaMao(valor);
-			} catch (NumberFormatException e) {
-				System.out.println("Apenas numeros");
-			}
-		}
-		s.close();
-		
-	}
+
 	public static void main(String[] args) {
 		Jogador jogador = new JogadorHumano("Edipo");
 		

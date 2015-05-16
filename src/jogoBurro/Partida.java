@@ -28,8 +28,8 @@ import baralho.Carta;
 public class Partida {
 	//O jogo so tem um baralho
 	private static Baralho baralho = new Baralho();
-	//Armazena a carta que está no topo da lista
-	private static Carta cartaMesa = null;
+	//Armazena a carta que está no topo da mesa
+	private static Carta cartaMesa = new Carta();
 	//Lista de jogadores
 	private LinkedList<Jogador> listaJogadores = new LinkedList<Jogador>();
 	
@@ -79,12 +79,30 @@ public class Partida {
 	
 	private void rodada(){
 		Carta carta = new Carta();
+		
 		for (Jogador jogador : listaJogadores) {
 			if (jogador instanceof JogadorHumano) {
+				Scanner s = new Scanner(System.in);
+				String palavra = new String();
 				carta = jogadaJogadorHumano(jogador);
 				while(!isJogadaValida(carta)){
-					System.out.println("Compre outra carta ou escolha outra carta de sua mao.");
+					System.out.println("Compre uma carta [c] ou escolha uma carta de sua mao [j].");
+					palavra = s.next();
+					switch (palavra) {
+					case "c":
+						jogador.addCartaMao(baralho.getCarta());
+						jogador.verMao();
+						break;
+					case "j":
+						carta = jogadaJogadorHumano(jogador);
+						jogador.verMao();
+						break;
+					default:
+						break;
+					}
 				}
+				s.close();
+				//falta ver quem venceu a rodada
 			}else if(jogador instanceof JogadorBot){
 				carta = jogadaJogadorBot(jogador);
 				while(!isJogadaValida(carta)){}
