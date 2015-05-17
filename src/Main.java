@@ -1,18 +1,24 @@
-import java.util.Scanner;
+//import java.util.Scanner;
 
-import jogador.Jogador;
-import jogador.JogadorHumano;
-import baralho.Baralho;
-import baralho.Carta;
+//import jogador.Jogador;
+//import jogador.JogadorHumano;
+import jogoBurro.Partida;
+//import baralho.Baralho;
+//import baralho.Carta;
 
 
 public class Main {
 
-	private static Scanner s;
-	private static Baralho baralho = new Baralho();
+	//private static Scanner s;
+	//private static Baralho baralho = new Baralho();
 
 	public static void main(String[] args) {
-		Jogador jogador = new JogadorHumano("Edipo");
+		
+		Partida partida = new Partida();
+		partida.novaPartida(4);
+		/* 
+		 * Jogador jogador = new JogadorHumano("Edipo");
+		 
 		
 		baralho.embaralhar();
 		
@@ -58,6 +64,7 @@ public class Main {
 			
 		}
 		System.out.println("saiu");
+		*/
 	}
 
 }

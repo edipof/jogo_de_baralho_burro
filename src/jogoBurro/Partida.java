@@ -9,6 +9,15 @@ import jogador.JogadorHumano;
 import baralho.Baralho;
 import baralho.Carta;
 /*
+ * Modificações - Diego
+ * 
+ * - Setei o id pra cada jogador humano dentro do Construtor, que antes estava no setId();
+ * - Comentei o codigo da classe Main e fiz a Chamada do metodo novaPartida(); (passei um valor default
+ *   de quatro jogadores, não sei se é isso mesmo que vc ia fazer)
+ * - codei uma parte na funçao novaPartida que inicia o jogo com uma carta na mesa
+ * - fiz a parte que verifica o vencedor da rodada
+ * - acho que não vou conseguir fazer o JogadoBot :/
+ * 
  * Burro
 
 	O objetivo do jogo é ficar sem nenhuma carta na mão. 
@@ -42,13 +51,15 @@ public class Partida {
 		if(cartaMesa == null || carta.getNaipe().equals(
 				cartaMesa.getNaipe()))
 			return true;
-		System.out.println("Jogada Invalida!");
-		return false;
+		else {
+			System.out.println("Jogada Invalida!");
+			return false;
+		}
 	}
 	
 	private Jogador vencedorDaRodada(Jogador jogador){
 		//retorna o vencedor da rodada
-		//System.out.println(jogador.getNome() + " venceu essa rodada!");
+		System.out.println(jogador.getNome() + " venceu essa rodada!");
 		return null;
 	}
 	
@@ -80,7 +91,9 @@ public class Partida {
 	private void rodada(){
 		Carta carta = new Carta();
 		
-		for (Jogador jogador : listaJogadores) {
+		for (int i = 0; i < 4; i++) {
+			Jogador jogador = listaJogadores.get(i);
+			System.out.println("Jogada do " + jogador.getNome());
 			if (jogador instanceof JogadorHumano) {
 				Scanner s = new Scanner(System.in);
 				String palavra = new String();
@@ -99,14 +112,19 @@ public class Partida {
 						break;
 					default:
 						break;
+					
 					}
+					break;
 				}
 				s.close();
-				//falta ver quem venceu a rodada
+				//falta ver quem venceu a rodadas
+				if (jogador.maoJogadorIsEmpty())
+					vencedorDaRodada(jogador);
 			}else if(jogador instanceof JogadorBot){
 				carta = jogadaJogadorBot(jogador);
 				while(!isJogadaValida(carta)){}
 			}
+			
 			
 		}
 	}
@@ -131,8 +149,19 @@ public class Partida {
 	
 	public void novaPartida(int numJogadores){
 		baralho.embaralhar();
+		//Scanner s = new Scanner(System.in);
 		
+		for (int i = 0; i < numJogadores; i++){
+			Jogador jogador = new JogadorHumano("jogador"+i, i);
+			listaJogadores.add(jogador);
+		}
 		distribuirCartasIniciais();
+		//Inicia a Partida tirando uma carta do baralho e jogando na mesa
+		/*if (baralho.temCarta())
+			cartaMesa = baralho.getCarta();
+		System.out.println("Carta da Mesa: \n" +
+				cartaMesa.getValorCarta() + " de " + cartaMesa.getNaipe());
+		System.out.println("==================\n"); */
 		
 		while(baralho.temCarta()){
 			rodada();

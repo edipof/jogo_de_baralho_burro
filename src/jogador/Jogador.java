@@ -41,4 +41,8 @@ public abstract class Jogador {
 		this.id = id;
 	}
 	
+	public boolean maoJogadorIsEmpty(){
+		return mao.maoIsEmpty();
+	}
+	
 }
