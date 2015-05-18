@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Arch Linux) (preloaded format=pdflatex 2015.4.13)  18 MAY 2015 10:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Arch Linux) (preloaded format=pdflatex 2015.4.13)  18 MAY 2015 19:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -435,7 +435,11 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@algocf=\count106
 \algocf@algoframe=\box31
 \algocf@algobox=\box32
-) (./TP0doc.aux)
+) (./TP0doc.aux
+
+LaTeX Warning: Label `Rotulo' multiply defined.
+
+)
 \openout1 = `TP0doc.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -557,153 +561,89 @@ Overfull \hbox (36.74841pt too wide) in paragraph at lines 18--18
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--38
+Underfull \hbox (badness 10000) in paragraph at lines 29--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--38
+Underfull \hbox (badness 10000) in paragraph at lines 29--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--38
+Underfull \hbox (badness 10000) in paragraph at lines 29--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--38
+Underfull \hbox (badness 10000) in paragraph at lines 29--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--38
+Underfull \hbox (badness 10000) in paragraph at lines 29--36
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 29--38
-
- []
-
-LaTeX Font Info:    Try loading font information for OMS+aer on input line 39.
+LaTeX Font Info:    Try loading font information for OMS+aer on input line 37.
 (/usr/share/texmf-dist/tex/latex/ae/omsaer.fd
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 39.
- [1
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--53
+
+ []
+
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 48--55
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 48--55
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 48--55
-
- []
-
 <Artigo.png, id=11, 684.5575pt x 368.37625pt>
 File: Artigo.png Graphic file (type png)
  <use Artigo.png>
-Package pdftex.def Info: Artigo.png used on input line 58.
+Package pdftex.def Info: Artigo.png used on input line 56.
 (pdftex.def)             Requested size: 342.27791pt x 184.18767pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--66
+<DiagramaAtividadesBurro.png, id=13, 757.83125pt x 547.04375pt>
+File: DiagramaAtividadesBurro.png Graphic file (type png)
 
- []
+<use DiagramaAtividadesBurro.png>
+Package pdftex.def Info: DiagramaAtividadesBurro.png used on input line 69.
+(pdftex.def)             Requested size: 378.9147pt x 273.5212pt.
+ [2 <./Artigo.png>] [3 <./DiagramaAtividadesBurro.png (PNG copy)>] (./TP0doc.au
+x)
 
+LaTeX Warning: There were multiply-defined labels.
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--71
-
- []
-
-[2 <./Artigo.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 73--76
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--76
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 82--98
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 82--98
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 82--98
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 99--104
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--104
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--104
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 105--149
-
- []
-
-
-Overfull \hbox (6.5214pt too wide) in paragraph at lines 105--149
-\T1/aer/m/n/12 14;21.1538 15;16.3448 16;12.2586 17;24.0968 18;8.1724 19;7.8889 
-20;16.9231 21;20.4310 22;12.0484
- []
-
-
-Overfull \hbox (0.65347pt too wide) in paragraph at lines 105--149
-\T1/aer/m/n/12 23;12.0484 24;19.7222 25;7.8889 26;16.3448 27;8.1724 28;25.3846 
-29;8.0323 30;12.2586 31;12.0484
- []
-
-[4] (./TP0doc.aux) ) 
+ ) 
 Here is how much of TeX's memory you used:
- 4821 strings out of 493109
- 60473 string characters out of 6140856
- 158078 words of memory out of 5000000
- 8172 multiletter control sequences out of 15000+600000
+ 4826 strings out of 493109
+ 60627 string characters out of 6140856
+ 159117 words of memory out of 5000000
+ 8176 multiletter control sequences out of 15000+600000
  30033 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,6n,24p,758b,230s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-2.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmti12.pfb>
-Output written on TP0doc.pdf (4 pages, 87544 bytes).
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ti12.pfb>
+Output written on TP0doc.pdf (3 pages, 268314 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 26 compressed objects within 1 object stream
+ 38 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
