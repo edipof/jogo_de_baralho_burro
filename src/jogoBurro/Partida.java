@@ -58,8 +58,8 @@ public class Partida {
 	}
 	
 	private Boolean isMaiorCartaDaRodada(Carta carta){
-		if(cartaMesa == null ||Integer.parseInt(cartaMesa.getValorCarta().toString()) < 
-				Integer.parseInt(carta.getValorCarta().toString()) ){
+		if(cartaMesa == null ||cartaMesa.getValorCarta().getValorCarta() < 
+				carta.getValorCarta().getValorCarta() ){
 			cartaMesa = carta;
 			return true;
 		}
@@ -98,21 +98,23 @@ public class Partida {
 			if (jogador instanceof JogadorHumano) {
 				System.out.println("Escolha uma carta de sua mao para jogar");
 				carta = jogadaJogadorHumano(jogador);
-				while(!isJogadaValida(carta)){
-					System.out.println("Compre uma carta [c] ou escolha uma carta de sua mao [j].");
-					palavra = s.next();
-					switch (palavra) {
-					case "c":
-						jogador.addCartaMao(baralho.getCarta());
-						jogador.verMao();
-						break;
-					case "j":
-						carta = jogadaJogadorHumano(jogador);
-						jogador.verMao();
-						break;
-					default:
-						break;
-					}
+				if(!isJogadaValida(carta) || listaJogadores.indexOf(jogador) > 0){
+					while(!isJogadaValida(carta)){
+						System.out.println("Compre uma carta [c] ou escolha uma carta de sua mao [j].");
+						palavra = s.next();
+						switch (palavra) {
+						case "c":
+							jogador.addCartaMao(baralho.getCarta());
+							jogador.verMao();
+							break;
+						case "j":
+							carta = jogadaJogadorHumano(jogador);
+							jogador.verMao();
+							break;
+						default:
+							break;
+						}
+					}	
 				}
 			}
 			//adicionando a lista de quem ja jogou
