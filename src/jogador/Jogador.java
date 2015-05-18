@@ -21,6 +21,10 @@ public abstract class Jogador {
 		mao.addCartaMao(carta);
 	}
 	
+	public int sizeMao(){
+		return mao.sizeMao();
+	}
+	
 	public void verMao(){
 		mao.verMao();
 	}
