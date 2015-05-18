@@ -63,6 +63,7 @@ public class Partida {
 			cartaMesa = carta;
 			return true;
 		}
+		cartaMesa = carta;
 		return false;
 	}
 	
