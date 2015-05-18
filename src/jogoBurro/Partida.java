@@ -123,12 +123,17 @@ public class Partida {
 					System.out.println("Compre uma carta [c] ou escolha uma carta de sua mao [j].");
 					jogador.verMao();
 					palavra = s.next();
-					carta = movimentoJogador(palavra, jogador);
+					if(palavra.equals("j"))
+						carta = jogadaJogadorHumano(jogador);
+					else
+						carta = movimentoJogador(palavra, jogador);
 				}
-					
+				if(!isJogadaValida(carta))
+					jogador.addCartaMao(carta);
 				while(!isJogadaValida(carta)){
 					palavra = s.next();
 					carta = movimentoJogador(palavra, jogador);
+					jogador.addCartaMao(carta);
 				}	
 			}
 			//adicionando a lista de quem ja jogou
