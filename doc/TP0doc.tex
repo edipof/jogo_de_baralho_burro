@@ -1,0 +1,158 @@
+%Documentação do Trabalho Prático 0 de AEDSIII
+%Édipo Fernandes Vieira de Oliveira - 2011054324
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel} %idioma
+\usepackage{ae} %caracteres especiais
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{enumerate}
+\usepackage[tmargin=2cm, bmargin=2cm, lmargin=2cm, rmargin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage[lined,algonl,ruled]{algorithm2e} %Para acrescentar algorithm
+\begin{document}
+
+ %capa
+
+ \title{Trabalho Prático 2 \\ Jogo de Baralho - Burro \\}
+ \author{Édipo Fernandes Vieira de Oliveira - 2011054324\\ Diego Henrique de Castro Aniceto - 2011054286\\Departamento de Ciência da Computação -- Universidade Federal de Minas Gerais\\}
+  \maketitle
+
+ %\newpage
+ %sumario
+  %use o section
+
+\textbf{\textit \\Resumo: }
+\textit{\\ Este relatório descreve a implementação do Jogo de baralho Burro. Para que fosse possivel essa implemetação foi utilizado a linguagem de programação Java além de teorias de Orientação a Objeto, dentre elas Modularização, Encapsulamento, Herança, Polimorfismo, entre outras.\\
+  O resultado obtido foi satisfatório, tanto em relação a solução do problema, quanto aos conceitos envolvidos.}
+\section*{1. Introdução}
+
+  Este trabalho tem como objetivo, observar na prática os principais conceitos da Programação Orientada ao Objetoo. Para que estes fossem exercitados foi proposto a implementação de um jogo de baralho. O jogo escolhido é chamado \textbf{Burro}, ele funciona da seguinte forma:
+  \\\\
+  São necessários no mínimo duas pessoas para jogar, porém não contém um numero máximo de jogadores. O jogo se inicia com as pessoas recebendo quatro cartas cada, uma destas deverá jogar uma carta na mesa, as demais deverão jogar uma carta do mesmo naipe daquela que está na mesa, caso não tenham o naipe solicitado em mãos a pessoa deverá comprar cartas no monte de cartas ate que encontre o naipe necessário, quem jogar a maior carta será  vencedor da jogada, e deverá iniciar a próxima rodada. O vencedor do será aquele que jogar todas as suas cartas da mão na mesa. O perdedor será aquele que ficar com cartas na mão por ultimo. o numero de cartas que estiver na mão dele serão os 'anos de burrice' da pessoa.
+  \\\\
+  O jogo foi modelado utilizando como base as entidades principais do jogo, \textit{Jogador} e \textit{Baralho}, e a partir destas foram geradas as classes utilizadas para o desenvolvimento do jogo e que também serão descritas nas próximas sessões.
+  \\\\
+  Para que a implementação deste trabalho fosse possível, foram utilizados conceitos de Orientação a Objeto, como herança, polimorfismo, restrição de acesso, entre outros, pois dessa forma o algoritmo cobre os requisitos básicos solicitados e também facilita a compreensão do trabalho.
+  \\\\
+  O trabalho está composto das seguintes seções:\\\\
+  \begin{itemize}
+    \item A seção 2 discute detalhes de implementação e da modelagem do problema.
+    \item A seção 3 traz os testes realizados para verificar a solução do trabalho, bem como a saída gerada
+    \item A seção 4 apresenta uma breve conclusão sobre o trabalho.
+    \item E por fim a seção 5 traz as referências bibliográficas.
+  \end{itemize}
+
+%% Implementação %%
+\section*{2. Implementação}
+  \subsection*{2.1. Modelagem do Jogo}
+  O jogo foi modelado em torno de duas classes principais, \textit{Jogador} e \textit{Baralho}.
+  \\\\
+  A classe \textit{Jogador} é abstrata, logo contem métodos abstratos e concretos, ela também é a classe base de outras duas, \textit{JogadorHumano} e \textit{JogadorBot} que extendem da super classe. A classe \textit{JogadorHumano} como o proprio nome diz, modela um jogador humano e de acordo com o conceito de herança, ela "É-UM" \textit{Jogador}, assim ela só pode ser um jogador  e a classe \textit{JogadorBot} modela um jogador controlado pelo computador e segue o mesmo conceito da classe anterior.\\\\
+  A classe \textit{Baralho} é uma classe concreta que é composta por \textit{Cartas}, estas por sua vez são compostas de \textit{Naipe} e \textit{Valor}, essas duas ultimas, são enumerações, uma forma encontrada para facilitar o desenvolvimento e deixa-lo mais simplificado.
+  \\\\
+  Essa modelagem pode ser visualizada de forma simples no Diagrama de Classes a seguir:
+%% Inserir a baixo o Diagrama de Classes  =================================================================================
+
+  \begin{figure}[!htb]
+   \centering
+   \includegraphics[scale=0.5]{Artigo}
+   \caption{Estrutura de Dependência de Artigo}
+   \label{Rotulo}
+  \end{figure}
+%% ========================================================================================================================
+
+  Como pode ser visto no diagrama acima, a classe \textbf{ArtigoMainControle.java} faz o encapsulamento das demais classes, fornecendo o conjunto de todas as operações necessárias envolvendo um Artigo, não sendo necessario assim nenhuma altaração nas classes bases.\\\\
+  A modularização das entidades Pesquisador e Veiculo de Comunicação foram feitas de forma similar a classe Artigo, porém de forma mais simples pois essas classes não tem dependências de demais classes, o que facilita o reuso e a manutenção destas.
+
+  \subsection*{2.2. Conceitos OO}
+    Para a modularização e o encapsulamento das classes fossem possíveis, foi necessária a implementação dos conceitos de \textit{Orientação a Objeto}.\\\\
+    O conceito utilizado para realizar o relacionamento entre as classes foi o de \textbf{Composição} onde temos uma classe que funciona como o \textit{todo} e classes que funcionam como uma parte deste todo, por exemplo, a classe \textbf{PesquisadorControle} (responsável pela implementação dos metódos referentes a entidade Pesquisador) é o todo e a classe \textbf{Pesquisador} é parte da classe \textbf{PesquisadorControle}.
+    Foi utilizado também o conceito de Objeto, que foi utilizado para que o acesso as classes dependentes fosse possível.
+
+  \subsection*{2.3. Calculos e Execução}
+    O principal objetivo do trabalho era fornecer uma lista com a popularidade de cada pesquisador, o fator de impacto de cada veiculo de comunicação e a pontuação de cada artigo. Para resolver esses problemas, foi criada uma classe especifica que processa todos esses dados e gera os dados solicitados.\\\\
+    Esta classe é composta por objetos de todas as classes \textbf{Controle} que fornecem as operações de suas respectivas entidades, tornando possível o processamento dos dados e o fornecimento das respostas.\\\\
+    Para que a solução fosse executada, foi desenvolvida uma classe principal, \textbf{MainClass}, que contem um construtor e um objeto da classe \textbf{Resultado} que realiza os cálculos necessários pra solucionar o problema proposto.
+
+
+%% Testes %%
+\section*{3. Testes}
+  A solução proposta resolve o problema proposto de forma eficaz e eficiente, gerando a saida esperada, com os dados de Popularidade do pesquisador, fator de inpacto dos veiculos de comunicação e a pontuação dos artigos de forma ordenada. Segue abaixo a saida gerada pelo programa\\
+
+  \textbf{popularidade\_pesquisador.txt}\\\\
+  1;1356.6667\\
+  2;264.7500\\
+  3;357.8333\\
+  4;355.8333\\
+  5;639.2500\\
+  6;522.2500\\
+  7;778.8333\\
+  8;732.0000\\
+  9;377.5000\\
+  10;357.1667\\
+  11;405.0000\\
+  12;420.6667\\
+  13;595.4167\\
+  14;305.0000\\
+  15;366.0000\\\\
+
+  \textbf{fatorImpacto\_veiculo.txt}\\\\
+  1;4.0161\\
+  2;4.2308\\
+  3;4.0862\\
+  4;3.9444\\\\
+
+  \textbf{pontuacao\_artigo.txt}\\\\
+  1;15.7778\\
+  2;12.0484\\
+  3;11.8333\\
+  4;4.0862\\
+  5;8.1724\\
+  6;12.0484\\
+  7;24.5172\\
+  8;8.4615\\
+  9;23.6667\\
+  10;8.0323\\
+  11;4.2308\\
+  12;12.2586\\
+  13;7.8889\\
+  14;21.1538
+  15;16.3448
+  16;12.2586
+  17;24.0968
+  18;8.1724
+  19;7.8889
+  20;16.9231
+  21;20.4310
+  22;12.0484
+  23;12.0484
+  24;19.7222
+  25;7.8889
+  26;16.3448
+  27;8.1724
+  28;25.3846
+  29;8.0323
+  30;12.2586
+  31;12.0484
+  32;12.2586
+  33;3.9444
+  34;16.3448
+  35;0.0000
+  36;12.0484
+  37;8.0323
+  38;15.7778
+  39;4.2308
+  40;0.0000
+  41;21.1538
+  42;24.0968
+  43;11.8333
+
+
+
+%% Conclusão %%
+\section*{4. Conclusão}
+
+
+%% Referencias %%
+\section*{5. Referências bibliográficas}
+\end{document}
