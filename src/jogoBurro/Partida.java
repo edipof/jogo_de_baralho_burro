@@ -81,7 +81,7 @@ public class Partida {
 				System.out.println("Apenas numeros");
 			}
 		}
-		s.close();
+		//s.close();
 		
 		return carta;
 	}
@@ -123,7 +123,7 @@ public class Partida {
 			}else
 				listaDeQuemJogou(jogador);
 		}
-		s.close();
+		//s.close();
 		//limpando a lista
 		listaJogadores.clear();
 		listaJogadores.addFirst(jogadorVencedorRodada);
