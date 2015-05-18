@@ -46,8 +46,8 @@ public class MaoDeCartas {
 		
 		return null;
 	}
+	
 	protected boolean maoIsEmpty() {
-		
 		if (cartas.isEmpty())
 			return true;
 		else

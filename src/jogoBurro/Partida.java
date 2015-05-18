@@ -1,23 +1,14 @@
 package jogoBurro;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 import jogador.Jogador;
-import jogador.JogadorBot;
 import jogador.JogadorHumano;
 import baralho.Baralho;
 import baralho.Carta;
 /*
- * Modificações - Diego
- * 
- * - Setei o id pra cada jogador humano dentro do Construtor, que antes estava no setId();
- * - Comentei o codigo da classe Main e fiz a Chamada do metodo novaPartida(); (passei um valor default
- *   de quatro jogadores, não sei se é isso mesmo que vc ia fazer)
- * - codei uma parte na funçao novaPartida que inicia o jogo com uma carta na mesa
- * - fiz a parte que verifica o vencedor da rodada
- * - acho que não vou conseguir fazer o JogadoBot :/
- * 
  * Burro
 
 	O objetivo do jogo é ficar sem nenhuma carta na mão. 
@@ -38,9 +29,14 @@ public class Partida {
 	//O jogo so tem um baralho
 	private static Baralho baralho = new Baralho();
 	//Armazena a carta que está no topo da mesa
-	private static Carta cartaMesa = new Carta();
+	private static Carta cartaMesa = null;
 	//Lista de jogadores
 	private LinkedList<Jogador> listaJogadores = new LinkedList<Jogador>();
+	//Lista auxiliar para armazenar jogadores
+	private ArrayList<Jogador> auxListJogadores = new ArrayList<Jogador>();
+	//Jogador Aux vencedor da rodada
+	private Jogador jogadorVencedorRodada = null;
+	private Boolean fimDeJogo = false;
 	
 	public void addJogador(Jogador jogador){
 		listaJogadores.add(jogador);
@@ -57,10 +53,17 @@ public class Partida {
 		}
 	}
 	
-	private Jogador vencedorDaRodada(Jogador jogador){
-		//retorna o vencedor da rodada
-		System.out.println(jogador.getNome() + " venceu essa rodada!");
-		return null;
+	private void listaDeQuemJogou(Jogador jogador){
+		auxListJogadores.add(jogador);
+	}
+	
+	private Boolean isMaiorCartaDaRodada(Carta carta){
+		if(cartaMesa == null ||Integer.parseInt(cartaMesa.getValorCarta().toString()) < 
+				Integer.parseInt(carta.getValorCarta().toString()) ){
+			cartaMesa = carta;
+			return true;
+		}
+		return false;
 	}
 	
 	private Carta jogadaJogadorHumano(Jogador jogador){
@@ -83,20 +86,17 @@ public class Partida {
 		return carta;
 	}
 	
-	private Carta jogadaJogadorBot(Jogador jogador){
-		//TODO
-		return null;
-	}
-	
 	private void rodada(){
 		Carta carta = new Carta();
-		
-		for (int i = 0; i < 4; i++) {
-			Jogador jogador = listaJogadores.get(i);
+		Scanner s = new Scanner(System.in);
+		String palavra = new String();
+		for (Jogador jogador : listaJogadores) {
 			System.out.println("Jogada do " + jogador.getNome());
+			if(cartaMesa != null)
+				System.out.println("Carta na mesa: " + cartaMesa.
+						getValorCarta()+" de " + cartaMesa.getNaipe());
 			if (jogador instanceof JogadorHumano) {
-				Scanner s = new Scanner(System.in);
-				String palavra = new String();
+				System.out.println("Escolha uma carta de sua mao para jogar");
 				carta = jogadaJogadorHumano(jogador);
 				while(!isJogadaValida(carta)){
 					System.out.println("Compre uma carta [c] ou escolha uma carta de sua mao [j].");
@@ -112,32 +112,34 @@ public class Partida {
 						break;
 					default:
 						break;
-					
 					}
-					break;
 				}
-				s.close();
-				//falta ver quem venceu a rodadas
-				if (jogador.maoJogadorIsEmpty())
-					vencedorDaRodada(jogador);
-			}else if(jogador instanceof JogadorBot){
-				carta = jogadaJogadorBot(jogador);
-				while(!isJogadaValida(carta)){}
 			}
-			
-			
+			//adicionando a lista de quem ja jogou
+			if(isMaiorCartaDaRodada(carta)){
+				if(jogadorVencedorRodada != null)
+					listaDeQuemJogou(jogadorVencedorRodada);
+				jogadorVencedorRodada = jogador;
+			}else
+				listaDeQuemJogou(jogador);
+		}
+		s.close();
+		//limpando a lista
+		listaJogadores.clear();
+		listaJogadores.addFirst(jogadorVencedorRodada);
+		for (Jogador jog : auxListJogadores){
+			listaJogadores.addLast(jog);
+		}
+		System.out.println(listaJogadores.getFirst().
+				getNome() + " venceu essa rodada!");
+		
+		for (Jogador jogador : listaJogadores){
+			if(jogador.maoJogadorIsEmpty()){
+				fimDeJogo = true;
+				break;
+			}
 		}
 	}
-	/*-Adicionar os jogadores;
-	-Distribuir as cartas iniciais (4 cartas);
-	rodada{
-		-Jogador de id 1 começa jogando uma carta;
-		-iterar até todos jogadores jogarem
-		-- Para jogar é preciso que a carta seja do mesmo naipe (isJogadaValida())
-		-- Se !isJogadaValida() comprar cartas até sair uma carta do naipe desejado
-		-- Vencedor da rodada é quem jogar a carta de maior valor
-	}
-	*/
 	
 	private void distribuirCartasIniciais(){
 		for (Jogador jogador : listaJogadores) {
@@ -146,26 +148,27 @@ public class Partida {
 			}
 		}
 	}
-	
+	private Jogador getVencedor(){
+		for (Jogador jogador : listaJogadores) {
+			if(jogador.maoJogadorIsEmpty())
+				return jogador;
+		}
+		return null;
+	}
 	public void novaPartida(int numJogadores){
 		baralho.embaralhar();
-		//Scanner s = new Scanner(System.in);
 		
 		for (int i = 0; i < numJogadores; i++){
 			Jogador jogador = new JogadorHumano("jogador"+i, i);
 			listaJogadores.add(jogador);
 		}
 		distribuirCartasIniciais();
-		//Inicia a Partida tirando uma carta do baralho e jogando na mesa
-		/*if (baralho.temCarta())
-			cartaMesa = baralho.getCarta();
-		System.out.println("Carta da Mesa: \n" +
-				cartaMesa.getValorCarta() + " de " + cartaMesa.getNaipe());
-		System.out.println("==================\n"); */
-		
 		while(baralho.temCarta()){
 			rodada();
+			if(fimDeJogo)
+				break;
 		}
-		
+		System.out.println(getVencedor().getNome()+ 
+				"venceu o jogo!");
 	}
 }
