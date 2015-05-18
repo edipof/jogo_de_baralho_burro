@@ -87,6 +87,25 @@ public class Partida {
 		return carta;
 	}
 	
+	private Carta movimentoJogador(String palavra, Jogador jogador){
+		Carta carta = new Carta();
+		System.out.println("Compre uma carta [c] ou escolha uma carta de sua mao [j].");
+		switch (palavra) {
+		case "c":
+			jogador.addCartaMao(baralho.getCarta());
+			jogador.verMao();
+			break;
+		case "j":
+			carta = jogadaJogadorHumano(jogador);
+			jogador.verMao();
+			break;
+		default:
+			break;
+		}
+		
+		return carta;
+	}
+	
 	private void rodada(){
 		Carta carta = new Carta();
 		Scanner s = new Scanner(System.in);
@@ -98,25 +117,19 @@ public class Partida {
 						getValorCarta()+" de " + cartaMesa.getNaipe());
 			if (jogador instanceof JogadorHumano) {
 				System.out.println("Escolha uma carta de sua mao para jogar");
-				carta = jogadaJogadorHumano(jogador);
-				if(!isJogadaValida(carta) || listaJogadores.indexOf(jogador) > 0){
-					while(!isJogadaValida(carta)){
-						System.out.println("Compre uma carta [c] ou escolha uma carta de sua mao [j].");
-						palavra = s.next();
-						switch (palavra) {
-						case "c":
-							jogador.addCartaMao(baralho.getCarta());
-							jogador.verMao();
-							break;
-						case "j":
-							carta = jogadaJogadorHumano(jogador);
-							jogador.verMao();
-							break;
-						default:
-							break;
-						}
-					}	
+				if(cartaMesa == null)
+					carta = jogadaJogadorHumano(jogador);
+				else{
+					System.out.println("Compre uma carta [c] ou escolha uma carta de sua mao [j].");
+					jogador.verMao();
+					palavra = s.next();
+					carta = movimentoJogador(palavra, jogador);
 				}
+					
+				while(!isJogadaValida(carta)){
+					palavra = s.next();
+					carta = movimentoJogador(palavra, jogador);
+				}	
 			}
 			//adicionando a lista de quem ja jogou
 			if(isMaiorCartaDaRodada(carta)){
