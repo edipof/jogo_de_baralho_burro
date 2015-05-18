@@ -47,7 +47,7 @@ CLASSES = \
 	jogador/JogadorHumano.java\
 	jogador/MaoDeCartas.java\
 	jogoBurro/Partida.java\
-	/Main.java\
+	Main.java\
 	
 #
 # the default make target entry
