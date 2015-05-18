@@ -45,11 +45,9 @@ CLASSES = \
 	baralho/Baralho.java\
 	jogador/Jogador.java\
 	jogador/JogadorHumano.java\
-	jogador/JogadorBot.java\
 	jogador/MaoDeCartas.java\
 	jogoBurro/Partida.java\
-	jogoBurro/Mesa.java\
-	/Main.java\
+	Main.java\
 	
 #
 # the default make target entry

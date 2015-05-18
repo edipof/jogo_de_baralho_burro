@@ -28,6 +28,9 @@ public class MaoDeCartas {
 		}
 	}
 	
+	protected int sizeMao(){
+		return cartas.size();
+	}
 	protected void addCartaMao(Carta carta){
 		cartas.add(carta);
 	}
