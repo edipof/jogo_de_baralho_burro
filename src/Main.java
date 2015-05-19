@@ -17,9 +17,13 @@ public class Main {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Digite o numero de Jogadores desejado: ");
 		int numJogadores = s.nextInt();
-
+		while(numJogadores < 2){
+			System.out.println("Para uma partida ocorrer eh preciso ao menos dois jogadores!");
+			numJogadores = s.nextInt();
+		}
+			
 		for (int i = 0; i < numJogadores; i++) {
-			System.out.println("Digite o nome do Jogador " + i + ":");
+			System.out.println("Digite o nome do Jogador " + (i+1) + ":");
 			nomes.add(s.next());
 		}
 		
